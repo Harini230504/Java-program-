@@ -1,0 +1,16 @@
+import java.util.*;
+class sample 
+{
+public static void main(String[] args)
+{
+int num=5;
+int row,space,star;
+for(row=1;row<=num;System.out.printf(\n),row+=1)
+{
+for(space=1;space<=num-row;space+=1)
+  System.out.print(" ");
+for(star=1;star<=2*row-1;star+=1)
+  System.out.print("*");
+}
+}
+}
