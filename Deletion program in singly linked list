@@ -1,0 +1,93 @@
+import java.util.*;
+public class deletion{
+    Node head;
+    
+    class Node{
+        int data;
+        Node next;
+        
+        Node(int val){
+            data = val;
+            next = null;
+            
+        }
+    }
+    deletion(){
+        head = null;
+    }
+    public void insertend(int val){
+        Node newnode = new Node(val);
+        
+        if (head ==null){
+            head = newnode;
+        }
+        else{
+            Node temp = head;
+            while(temp.next != null){
+                temp= temp.next;
+            }
+            temp.next = newnode;
+        }
+    }
+    public void deletebeg()
+    {
+        head=head.next;
+    }
+    public void deletepos(int d)
+    {
+        Node temp=head;
+        Node prev=null;
+        for(int i=1;i<d;i++)
+        {
+            prev=temp;
+            temp=temp.next;
+        }
+        prev.next=temp.next;
+    }
+    public void deleteend()
+    {
+        Node temp=head;
+        Node prev=null;
+        while(temp.next!=null)
+        {
+            prev=temp;
+            temp=temp.next;
+        }
+        prev.next=null;
+    }
+    public void display(){
+        Node temp = head;
+        
+        while(temp != null){
+            System.out.print(temp.data + "-->");
+            temp = temp.next;
+        }
+        System.out.println("Null");
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        deletion list=new deletion();
+        System.out.println("Enter the number of values to be inserted in the list:");
+        int n=sc.nextInt();
+        System.out.println("Enter the values to be inserted in the list:");
+        for(int i=0;i<n;i++)
+        {
+            int val=sc.nextInt();
+            list.insertend(val);
+        }
+        System.out.println("\nThe values in the list afer the insertion of the elements in the list:");
+        list.display();
+        list.deletebeg();
+        System.out.println("\nThe values in the list after the deletion of the elements at the beginnning");
+        list.display();
+        System.out.println("\nEnter the position to be deleted:");
+        int d=sc.nextInt();
+        list.deletepos(d);
+        System.out.println("\nThe values in the list after the deletion of element at specific position:");
+        list.display();
+        list.deleteend();
+        System.out.println("\nThe values in the list after the deletion of value at the end:");
+        list.display();
+    }
+}
